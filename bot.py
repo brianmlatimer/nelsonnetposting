@@ -15,8 +15,8 @@ async def on_message(message):
     if message.author == client.user:
         return
     await meme.roulette(message, message.content)
-    if message.content == "!shitpost":
-        await meme.shitpost(message,message.content[9::])
+    if message.content[:9] == "!shitpost":
+        await meme.shitpost(message, message.content[9::])
     if message.content == "!last":
         await meme.send_last_meme(message)
 client.run(botkey)

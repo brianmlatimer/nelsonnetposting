@@ -47,7 +47,7 @@ def is_image_greater_then_8_mb():
 
 async def roulette(message, caption):
     """Random chance that any message sent will turn into a meme"""
-    check = random.randint(1, 500)
+    check = random.randint(1, 250)
     if check == 1:
         await shitpost(message, caption)
 
@@ -66,10 +66,8 @@ async def send_last_meme(message):
 
 async def shitpost(message, caption):
     """Handler to load in text and image to meme maker"""
-    print("Initaiting Shitposting Sequence")
     async with message.channel.typing():
         flag = await fetch_meme(caption)
-        print("Meme has been fetched")
         if flag == "error":
             return
         text = caption
@@ -81,18 +79,15 @@ async def shitpost(message, caption):
         try:
             make_meme(text1, text2, image)
         except:
-            print("Error making meme, trying again")
             await sent.delete()
             await shitpost(ctx, caption)
             return
-        print("Meme has been made")
         await message.channel.send(file=discord.File('meme_functionality/images/output/output.jpg'))
         await sent.delete()
 
 def make_meme(top_string, bottom_string, filename):
     """Logic to generate meme"""
     resize(filename)
-    print("Meme is being made")
     img = Image.open(filename)
     image_size = img.size
     text_pos = find_text_pos(image_size, int(image_size[1]/5), top_string, bottom_string)
