@@ -72,8 +72,8 @@ async def shitpost(message, caption):
             return
         text = caption
         midpoint = find_space(text)
-        text1 = text[0:midpoint]
-        text2 = text[midpoint+1::]
+        text1 = '"' + text + '"'
+        text2 = ""
         image = "meme_functionality/images/temp.jpg"
         sent = await message.channel.send("Making meme...")
         try:
