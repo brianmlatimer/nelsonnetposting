@@ -16,7 +16,7 @@ def resize(image):
 
 async def fetch_meme(message):
     """Fetch memes from a cursed image sub-reddit to use with our meme making function"""
-    url_list= ['https://www.reddit.com/r/nocontextpics.json','https://www.reddit.com/r/pics.json']
+    url_list= ['https://www.reddit.com/r/reactionpics.json']
     response_api = requests.get(random.choice(url_list), headers={'User-agent': 'Based Bot 1.0'})
     if not response_api.ok:
         print("Error", response_api.status_code)
