@@ -2,7 +2,7 @@ import discord
 import os
 from meme_functionality import meme
 
-client = discord.Client()
+client = discord.Client(intents=discord.Intents.default())
 botkey = os.getenv("botkey")
 
 @client.event
